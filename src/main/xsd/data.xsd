@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://com.alborworld/schema/Runner"
+    targetNamespace="http://com.alborworld/schema/Runner"
+    elementFormDefault="qualified">
+    <xs:element name="runnerUpdate" type="runnerUpdateType" />
+    <xs:complexType name="runnerUpdateType">
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="country" type="xs:string" use="required" />
+        <xs:attribute name="km" type="xs:integer" use="required" />
+    </xs:complexType>
+    <xs:element name="runnerStatus" type="runnerStatusType" />
+    <xs:complexType name="runnerStatusType">
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="country" type="xs:string" use="required" />
+        <xs:attribute name="totalKm" type="xs:integer" use="required" />
+    </xs:complexType>
+    <xs:element name="runnerList" type="runnerListType" />
+    <xs:complexType name="runnerListType">
+        <xs:sequence>
+            <xs:element type="runnerStatusType" name="runner"
+                maxOccurs="unbounded" minOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="country" type="countryType" />
+    <xs:complexType name="countryType">
+        <xs:attribute type="xs:string" name="name" />
+        <xs:attribute type="xs:unsignedLong" name="totalKm" />
+    </xs:complexType>
+    <xs:element name="countryList" type="countryListType" />
+    <xs:complexType name="countryListType">
+        <xs:sequence>
+            <xs:element name="country" type="countryType"
+                maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
